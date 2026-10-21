@@ -1,0 +1,50 @@
+/**
+ * WCDP Elementor Integration — editor panel only.
+ *
+ * Loaded on `elementor/editor/after_enqueue_styles`, so it never reaches the
+ * frontend or the preview iframe. Widget placeholders live in
+ * `wcdp-el-base.css` instead, because they render inside the preview.
+ */
+
+/* Long placeholder descriptions on the campaign-source controls read better
+   with a little breathing room than as a wall of grey text. */
+.elementor-control-product_source_notice .elementor-control-field-description,
+.elementor-control-concurrency_notice .elementor-control-field-description,
+.elementor-control-popup_notice .elementor-control-field-description,
+.elementor-control-range_notice .elementor-control-field-description,
+.elementor-control-fee_notice .elementor-control-field-description,
+.elementor-control-template_notice .elementor-control-field-description {
+	padding: 8px 10px;
+	border-left: 3px solid #c3c4c7;
+	border-radius: 3px;
+	background: rgba(0, 0, 0, 0.04);
+	line-height: 1.5;
+}
+
+/* The composition switch changes what the whole Style tab contains, so it
+   deserves to look like a mode selector rather than one more dropdown. */
+.elementor-control-content_mode {
+	--wcdp-el-accent: #30bf76;
+}
+
+.elementor-control-content_mode > .elementor-control-content {
+	border-left: 3px solid var(--wcdp-el-accent);
+	padding-left: 8px;
+}
+
+/* Safety net for the six-value alignment controls: `label_block` already gives
+   them the full panel width, but a narrow panel plus a long translated label
+   can still overflow. Wrapping beats a horizontal scrollbar. */
+.elementor-control-row_align .elementor-choices,
+.elementor-control-row_align_above .elementor-choices,
+.elementor-control-row_align_below .elementor-choices,
+.elementor-control-bar_label_align .elementor-choices {
+	flex-wrap: wrap;
+}
+
+/* Long colour labels used to wrap to two lines and shove the picker out of
+   view. The labels are short now; this keeps the row honest if a translation
+   is longer than the English original. */
+.elementor-control-type-color .elementor-control-title {
+	overflow-wrap: anywhere;
+}

@@ -1,0 +1,136 @@
+/**
+ * WCDP Elementor Integration — donation form widget.
+ *
+ * The form itself stays WCDP's: it is a real WooCommerce checkout and must
+ * not be reimplemented. This file does two things instead.
+ *
+ * 1. Normalises the handful of controls whose browser-default appearance
+ *    ignores CSS (the range slider), so the Style tab's colour controls
+ *    actually change something.
+ *
+ * 2. Offers an opt-in modern layout for the step header. WCDP positions the
+ *    header with `float`, a fixed `height` and a `-6px` top margin, which is
+ *    what collapses the header inside Elementor flex containers. The
+ *    `wcdp-el-form--modern-header` variant reproduces the same design with
+ *    grid and absolute positioning — including the `width` percentages that
+ *    WCDP's JavaScript writes inline as the visitor advances.
+ *
+ * Popup forms are moved to `wp_footer` by WCDP, which puts them outside the
+ * widget wrapper. Rules that must reach them are keyed on `#wcdp-form` and
+ * `#wcdp-popup`; WCDP permits one form per page, so those ids are unique.
+ * The modern-header class needs no such treatment: it is passed through
+ * WCDP's `className` attribute and lands on `.wcdp-form` in both modes.
+ */
+
+/* ── Range slider ────────────────────────────────────────────────────── */
+
+.wcdp-el-form-host input[type="range"].wcdp-range,
+#wcdp-form input[type="range"].wcdp-range {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	margin: 0.75em 0 0;
+	background: transparent;
+}
+
+.wcdp-el-form-host input[type="range"].wcdp-range::-webkit-slider-runnable-track,
+#wcdp-form input[type="range"].wcdp-range::-webkit-slider-runnable-track {
+	height: var(--wcdp-el-range-track-height, 6px);
+	border-radius: 999px;
+	background: var(--wcdp-el-range-track-color, var(--wcdp-label-inactive, lightgrey));
+}
+
+.wcdp-el-form-host input[type="range"].wcdp-range::-moz-range-track,
+#wcdp-form input[type="range"].wcdp-range::-moz-range-track {
+	height: var(--wcdp-el-range-track-height, 6px);
+	border-radius: 999px;
+	background: var(--wcdp-el-range-track-color, var(--wcdp-label-inactive, lightgrey));
+}
+
+.wcdp-el-form-host input[type="range"].wcdp-range::-webkit-slider-thumb,
+#wcdp-form input[type="range"].wcdp-range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: var(--wcdp-el-range-thumb-size, 18px);
+	height: var(--wcdp-el-range-thumb-size, 18px);
+	margin-top: calc((var(--wcdp-el-range-track-height, 6px) - var(--wcdp-el-range-thumb-size, 18px)) / 2);
+	border: none;
+	border-radius: 50%;
+	background: var(--wcdp-el-range-thumb-color, var(--wcdp-main-2, #006633));
+	cursor: pointer;
+}
+
+.wcdp-el-form-host input[type="range"].wcdp-range::-moz-range-thumb,
+#wcdp-form input[type="range"].wcdp-range::-moz-range-thumb {
+	width: var(--wcdp-el-range-thumb-size, 18px);
+	height: var(--wcdp-el-range-thumb-size, 18px);
+	border: none;
+	border-radius: 50%;
+	background: var(--wcdp-el-range-thumb-color, var(--wcdp-main-2, #006633));
+	cursor: pointer;
+}
+
+/* ── Popup box sizing ────────────────────────────────────────────────── */
+
+#wcdp-popup {
+	box-sizing: border-box;
+}
+
+#wcdp-popup * {
+	box-sizing: border-box;
+}
+
+/* ── Opt-in modern step header ───────────────────────────────────────── */
+
+.wcdp-el-form--modern-header .wcdp-header {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	align-items: start;
+	height: auto;
+	padding-top: 0;
+	overflow: visible;
+}
+
+.wcdp-el-form--modern-header .wcdp-header > .wcdp-step {
+	float: none;
+	width: auto;
+	min-width: 0;
+}
+
+/* The track and the fill share one absolute band. The fill keeps `right:auto`
+   so WCDP's inline `width` percentage still drives it. */
+.wcdp-el-form--modern-header .wcdp-progress-bar-background,
+.wcdp-el-form--modern-header .wcdp-progress-bar {
+	position: absolute;
+	top: calc(var(--wcdp-el-step-circle-size, 1.5em) / 2);
+	left: 16.6667%;
+	margin: 0;
+	transform: translateY(-50%);
+	height: var(--wcdp-el-step-line-height, 6px);
+	border-radius: 999px;
+}
+
+.wcdp-el-form--modern-header .wcdp-progress-bar-background {
+	right: 16.6667%;
+	z-index: 0;
+}
+
+.wcdp-el-form--modern-header .wcdp-progress-bar {
+	right: auto;
+	z-index: 1;
+}
+
+.wcdp-el-form--modern-header .wcdp-header > .wcdp-step::before {
+	width: var(--wcdp-el-step-circle-size, 1.5em);
+	height: var(--wcdp-el-step-circle-size, 1.5em);
+	line-height: var(--wcdp-el-step-circle-size, 1.5em);
+}
+
+/* ── Button row ──────────────────────────────────────────────────────── */
+
+.wcdp-el-form-host .button-row,
+#wcdp-form .button-row {
+	gap: var(--wcdp-el-button-row-gap, 12px);
+	flex-wrap: wrap;
+}

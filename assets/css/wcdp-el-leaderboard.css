@@ -1,0 +1,151 @@
+/**
+ * WCDP Elementor Integration — leaderboard widget.
+ *
+ * The donor list keeps WCDP's markup on purpose: reproducing it would mean
+ * duplicating the order query, the anonymity rules and the placeholder
+ * templates stored in WCDP's own options — three things that must not drift.
+ * What this file replaces is WCDP's inline `<style>`: the same appearance,
+ * expressed through custom properties so every part becomes an Elementor
+ * control, scoped to the widget instead of the page.
+ *
+ * The geometry is driven by variables rather than fixed values, so a control
+ * can change a marker's size without also having to restate its position.
+ */
+
+.wcdp-el-leaderboard {
+	/* A flex column so the "Show more" button — a sibling of the list in
+	   WCDP's output — becomes a flex item and can be aligned with
+	   `align-self` instead of inheriting the list's text alignment. */
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
+	--wcdp-el-lb-indent: 36px;
+	--wcdp-el-lb-line-width: 2px;
+	--wcdp-el-lb-line-color: lightgrey;
+	--wcdp-el-lb-line-offset: 12px;
+	--wcdp-el-lb-dot-size: 10px;
+	--wcdp-el-lb-dot-color: var(--wcdp-main-2, #30bf76);
+	--wcdp-el-lb-icon-width: 1.39em;
+	--wcdp-el-lb-icon-height: 1em;
+	--wcdp-el-lb-icon-gap: 5px;
+}
+
+/* Required for the "Show more" button: WCDP's inline CSS carried this rule,
+   and its script toggles the class. Without it every hidden row is visible. */
+.wcdp-el-leaderboard .wcdp-leaderboard-hidden {
+	display: none;
+}
+
+.wcdp-el-leaderboard ul.wcdp-leaderboard {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-li div {
+	max-width: 100%;
+	min-width: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Style 1 — timeline
+   ══════════════════════════════════════════════════════════════════════ */
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-li {
+	position: relative;
+	padding: 12px 0 12px var(--wcdp-el-lb-indent);
+}
+
+/* The connecting line. */
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-li::before {
+	content: "";
+	position: absolute;
+	left: var(--wcdp-el-lb-line-offset);
+	top: 0;
+	bottom: 0;
+	width: var(--wcdp-el-lb-line-width);
+	background-color: var(--wcdp-el-lb-line-color);
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-li:first-child::before {
+	top: 50%;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-li:last-child::before {
+	bottom: 50%;
+}
+
+/* The dot. Centred on the line whatever size either one is. */
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-li::after {
+	content: "";
+	position: absolute;
+	left: calc(var(--wcdp-el-lb-line-offset) + (var(--wcdp-el-lb-line-width) / 2) - (var(--wcdp-el-lb-dot-size) / 2));
+	top: 50%;
+	transform: translateY(-50%);
+	width: var(--wcdp-el-lb-dot-size);
+	height: var(--wcdp-el-lb-dot-size);
+	background-color: var(--wcdp-el-lb-dot-color);
+	border-radius: 50%;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-title {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .woocommerce-Price-amount {
+	font-weight: 700;
+	color: var(--wcdp-main-2, #30bf76);
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s1 .wcdp-leaderboard-subtitle {
+	font-size: 1em;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Style 2 — compact list with icon
+   ══════════════════════════════════════════════════════════════════════ */
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .wcdp-leaderboard-li {
+	display: flex;
+	align-items: baseline;
+	padding: 3px 0;
+}
+
+/* Upstream pins the row content to `calc(100% - 1.4em)`, which overflows as
+   soon as the icon is resized. Letting flex do the sizing keeps long donor
+   names from pushing the row out of its container. */
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .wcdp-leaderboard-li div {
+	flex: 1 1 auto;
+	width: auto;
+	min-width: 0;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .wcdp-leaderboard-li::before {
+	content: "";
+	flex: 0 0 auto;
+	display: inline-block;
+	width: var(--wcdp-el-lb-icon-width);
+	height: var(--wcdp-el-lb-icon-height);
+	margin: 0 var(--wcdp-el-lb-icon-gap) 0 0;
+	background-image: var(--wcdp-el-lb-icon, none);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .wcdp-leaderboard-title,
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .woocommerce-Price-amount,
+.wcdp-el-leaderboard .wcdp-leaderboard-s2 .wcdp-emphasized {
+	font-weight: 700;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Show more button
+   ══════════════════════════════════════════════════════════════════════ */
+
+.wcdp-el-leaderboard .wcdp-button {
+	align-self: flex-start;
+	cursor: pointer;
+}

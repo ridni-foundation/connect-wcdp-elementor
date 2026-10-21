@@ -1,0 +1,73 @@
+/**
+ * WCDP Elementor Integration — shared base layer.
+ *
+ * Deliberately minimal: it defines only what the addon's own markup needs and
+ * never resets theme typography, so a widget inherits the site's design until
+ * an Elementor control says otherwise. No rule here uses `!important` — every
+ * declaration must stay overridable by Elementor's per-instance CSS and, on
+ * Elementor 4, by Global Classes.
+ */
+
+/* ── Styleable value spans ───────────────────────────────────────────── */
+
+.wcdp-el-value {
+	display: inline;
+}
+
+.wcdp-el-emphasis {
+	display: inline;
+	font-weight: 700;
+}
+
+/* WooCommerce wraps prices in its own markup; keep it from breaking mid-value. */
+.wcdp-el-value .woocommerce-Price-amount {
+	white-space: nowrap;
+}
+
+/* ── Editor-only placeholders ────────────────────────────────────────── */
+
+.wcdp-el-placeholder {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	box-sizing: border-box;
+	padding: 14px 16px;
+	border: 1px dashed #c3c4c7;
+	border-radius: 4px;
+	background-color: #f6f7f7;
+	color: #50575e;
+	font-size: 13px;
+	line-height: 1.5;
+	text-align: left;
+}
+
+.wcdp-el-placeholder__title {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #1d2327;
+}
+
+.wcdp-el-placeholder--hint {
+	margin-top: 8px;
+	border-color: #dba617;
+	background-color: #fcf9e8;
+	color: #674e00;
+}
+
+.wcdp-el-placeholder--hint .wcdp-el-placeholder__title {
+	color: #674e00;
+}
+
+@media (prefers-color-scheme: dark) {
+	.wcdp-el-placeholder {
+		border-color: #4a4a4a;
+		background-color: #2b2b2b;
+		color: #d0d0d0;
+	}
+
+	.wcdp-el-placeholder__title {
+		color: #f0f0f0;
+	}
+}

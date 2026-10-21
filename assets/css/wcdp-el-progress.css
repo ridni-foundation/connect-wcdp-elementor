@@ -1,0 +1,111 @@
+/**
+ * WCDP Elementor Integration — progress widget.
+ *
+ * Flexbox throughout, no floats and no negative margins, so the widget behaves
+ * predictably inside Elementor containers and inside archive/loop cards — the
+ * two places WCDP's own float-and-negative-margin CSS came apart.
+ *
+ * Geometry is driven by custom properties so an Elementor control can change a
+ * value without having to restate everything around it.
+ */
+
+.wcdp-el-progress {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	box-sizing: border-box;
+}
+
+.wcdp-el-progress__row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.5em;
+	min-width: 0;
+}
+
+.wcdp-el-progress__item {
+	min-width: 0;
+}
+
+/* ── Bar ─────────────────────────────────────────────────────────────── */
+
+.wcdp-el-progress__bar {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	box-sizing: border-box;
+	min-height: 16px;
+	overflow: hidden;
+	border-radius: 999px;
+	isolation: isolate;
+}
+
+.wcdp-el-progress__track {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-color: var(--wcdp-el-track-color, #e6e9e7);
+	border-radius: inherit;
+}
+
+.wcdp-el-progress__fill {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	box-sizing: border-box;
+	width: var(--wcdp-el-fill, 0%);
+	min-width: 0;
+	background-color: var(--wcdp-el-fill-color, #30bf76);
+	border-radius: inherit;
+	transition: width 0.6s ease;
+}
+
+/* Label following the fill: in flow, so a tall label grows the bar. */
+.wcdp-el-progress__bar--label-fill .wcdp-el-progress__bar-label {
+	padding: 0 0.75em;
+	white-space: nowrap;
+	color: var(--wcdp-el-bar-label-color, #fff);
+}
+
+/* Label over the whole bar: an absolute layer, never clipped by the fill. */
+.wcdp-el-progress__bar-wrap {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	pointer-events: none;
+}
+
+.wcdp-el-progress__bar--label-bar .wcdp-el-progress__bar-label {
+	padding: 0 0.75em;
+	white-space: nowrap;
+}
+
+/* ── Load animation ──────────────────────────────────────────────────── */
+
+.wcdp-el-progress--animated .wcdp-el-progress__fill {
+	animation: wcdp-el-progress-grow var(--wcdp-el-bar-duration, 1.5s) ease-out;
+}
+
+@keyframes wcdp-el-progress-grow {
+	from {
+		width: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wcdp-el-progress--animated .wcdp-el-progress__fill {
+		animation: none;
+	}
+
+	.wcdp-el-progress__fill {
+		transition: none;
+	}
+}

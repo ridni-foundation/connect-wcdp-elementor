@@ -1,0 +1,46 @@
+/**
+ * WCDP Elementor Integration — campaign product widgets.
+ *
+ * Structural only: enough for the Style tab's alignment, aspect-ratio and
+ * hover controls to work, and nothing that would fight the theme's own
+ * typography.
+ */
+
+.wcdp-el-product-title,
+.wcdp-el-product-price {
+	margin: 0;
+}
+
+.wcdp-el-product-title a,
+.wcdp-el-product-price a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+/* A flex row so the alignment control can use `justify-content`, which works
+   for an image of any width — unlike `text-align`, which needs the image to
+   stay inline. */
+.wcdp-el-product-image {
+	display: flex;
+	line-height: 0;
+}
+
+.wcdp-el-product-image img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Keeps the price on one line so a currency symbol never wraps away from its
+   number. */
+.wcdp-el-product-price .woocommerce-Price-amount {
+	white-space: nowrap;
+}
+
+.wcdp-el-product-price del {
+	opacity: 0.6;
+}
+
+.wcdp-el-product-price ins {
+	text-decoration: none;
+}
