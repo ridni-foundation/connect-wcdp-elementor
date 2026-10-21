@@ -1000,7 +1000,9 @@ class Progress extends Widget_Base {
 
 		$this->add_render_attribute( 'wrapper', $attributes );
 
-		echo '<div ' . $this->get_render_attribute_string( 'wrapper' ) . '>';
+		echo '<div ';
+		$this->print_render_attribute_string( 'wrapper' );
+		echo '>';
 
 		$this->render_row( 'above', $rows['above'] );
 
@@ -1061,7 +1063,9 @@ class Progress extends Widget_Base {
 			)
 		);
 
-		echo '<div ' . $this->get_render_attribute_string( 'bar' ) . '>';
+		echo '<div ';
+		$this->print_render_attribute_string( 'bar' );
+		echo '>';
 		echo '<div class="wcdp-el-progress__track"></div>';
 
 		if ( '' !== $label && 'fill' === $placement ) {

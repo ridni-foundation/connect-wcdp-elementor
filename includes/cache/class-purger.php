@@ -97,7 +97,7 @@ final class Purger {
 				}
 			},
 			'all'    => static function (): void {
-				do_action( 'litespeed_purge_all', 'WCDP Elementor Integration' );
+				do_action( 'litespeed_purge_all', WCDP_EL_NAME );
 			},
 		);
 
@@ -195,7 +195,7 @@ final class Purger {
 			'posts'  => null,
 			'urls'   => static function ( array $urls ): void {
 				foreach ( $urls as $url ) {
-					do_action( 'siteground_optimizer_flush_cache', $url );
+					do_action( 'siteground_optimizer_flush_cache', $url ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: SiteGround Optimizer.
 				}
 			},
 			'all'    => static function (): void {
@@ -212,11 +212,11 @@ final class Purger {
 			'posts'  => null,
 			'urls'   => static function ( array $urls ): void {
 				foreach ( $urls as $url ) {
-					do_action( 'rt_nginx_helper_purge_url', $url );
+					do_action( 'rt_nginx_helper_purge_url', $url ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Nginx Helper.
 				}
 			},
 			'all'    => static function (): void {
-				do_action( 'rt_nginx_helper_purge_all' );
+				do_action( 'rt_nginx_helper_purge_all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Nginx Helper.
 			},
 		);
 
@@ -226,12 +226,12 @@ final class Purger {
 			'active' => class_exists( '\Hummingbird\WP_Hummingbird' ) || defined( 'WPHB_VERSION' ),
 			'posts'  => static function ( array $ids ): void {
 				foreach ( $ids as $id ) {
-					do_action( 'wphb_clear_page_cache', $id );
+					do_action( 'wphb_clear_page_cache', $id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Hummingbird.
 				}
 			},
 			'urls'   => null,
 			'all'    => static function (): void {
-				do_action( 'wphb_clear_page_cache' );
+				do_action( 'wphb_clear_page_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Hummingbird.
 			},
 		);
 
@@ -242,7 +242,7 @@ final class Purger {
 			'posts'  => null,
 			'urls'   => null,
 			'all'    => static function (): void {
-				do_action( 'breeze_clear_all_cache' );
+				do_action( 'breeze_clear_all_cache' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Breeze.
 			},
 		);
 
@@ -273,12 +273,12 @@ final class Purger {
 			'active' => class_exists( '\Kinsta\Cache' ) || defined( 'KINSTAMU_VERSION' ),
 			'posts'  => static function ( array $ids ): void {
 				foreach ( $ids as $id ) {
-					do_action( 'kinsta_cache_purge_post', $id );
+					do_action( 'kinsta_cache_purge_post', $id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Kinsta MU plugin.
 				}
 			},
 			'urls'   => null,
 			'all'    => static function (): void {
-				do_action( 'kinsta_cache_purge_all' );
+				do_action( 'kinsta_cache_purge_all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: Kinsta MU plugin.
 			},
 		);
 

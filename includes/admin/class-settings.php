@@ -73,7 +73,7 @@ final class Settings {
 
 		$hook = add_submenu_page(
 			'elementor',
-			esc_html__( 'WCDP Elementor Integration', 'connect-wcdp-elementor' ),
+			esc_html( WCDP_EL_NAME ),
 			$title,
 			'manage_options',
 			self::PAGE,
@@ -82,7 +82,7 @@ final class Settings {
 
 		if ( ! $hook ) {
 			add_options_page(
-				esc_html__( 'WCDP Elementor Integration', 'connect-wcdp-elementor' ),
+				esc_html( WCDP_EL_NAME ),
 				$title,
 				'manage_options',
 				self::PAGE,
@@ -275,7 +275,7 @@ final class Settings {
 			<div class="wcdp-el-hero">
 				<div>
 					<h1 class="wcdp-el-hero__title">
-						<?php esc_html_e( 'WCDP Elementor Integration', 'connect-wcdp-elementor' ); ?>
+						<?php echo esc_html( WCDP_EL_NAME ); ?>
 						<span class="wcdp-el-pill wcdp-el-pill--neutral">
 							<?php echo esc_html( WCDP_EL_VERSION ); ?>
 						</span>
@@ -610,13 +610,16 @@ final class Settings {
 			);
 		}
 
+		$pages = (int) ( $last['posts'] ?? 0 );
+
 		return array(
 			'label' => esc_html__( 'Last purge', 'connect-wcdp-elementor' ),
+			// Raw on purpose: the diagnostics table escapes every value on output.
 			'value' => sprintf(
-				/* translators: 1: human time difference, 2: number of pages. */
-				esc_html__( '%1$s ago · %2$d pages', 'connect-wcdp-elementor' ),
+				/* translators: 1: human time difference, 2: number of pages, e.g. "3 pages". */
+				__( '%1$s ago · %2$s', 'connect-wcdp-elementor' ),
 				human_time_diff( (int) $last['time'] ),
-				(int) ( $last['posts'] ?? 0 )
+				self::count_pages( $pages )
 			),
 			'state' => 'neutral',
 		);
@@ -630,15 +633,36 @@ final class Settings {
 	private function index_fact(): array {
 		$stats = Location_Index::stats();
 
+		$campaigns = (int) $stats['campaigns'];
+
 		return array(
 			'label' => esc_html__( 'Known locations', 'connect-wcdp-elementor' ),
+			// Raw on purpose: the diagnostics table escapes every value on output.
 			'value' => sprintf(
-				/* translators: 1: number of campaigns, 2: number of pages. */
-				esc_html__( '%1$d campaigns on %2$d pages', 'connect-wcdp-elementor' ),
-				(int) $stats['campaigns'],
-				(int) $stats['pages']
+				/* translators: 1: number of campaigns, e.g. "2 campaigns"; 2: number of pages, e.g. "5 pages". */
+				__( '%1$s on %2$s', 'connect-wcdp-elementor' ),
+				sprintf(
+					/* translators: %d: number of campaigns. */
+					_n( '%d campaign', '%d campaigns', $campaigns, 'connect-wcdp-elementor' ),
+					$campaigns
+				),
+				self::count_pages( (int) $stats['pages'] )
 			),
 			'state' => 'neutral',
+		);
+	}
+
+	/**
+	 * "1 page" / "5 pages", with the plural form of the site language.
+	 *
+	 * @param int $pages Number of pages.
+	 * @return string Unescaped.
+	 */
+	private static function count_pages( int $pages ): string {
+		return sprintf(
+			/* translators: %d: number of pages. */
+			_n( '%d page', '%d pages', $pages, 'connect-wcdp-elementor' ),
+			$pages
 		);
 	}
 
@@ -955,7 +979,9 @@ final class Settings {
 				--wcdp-el-line: var(--wpds-color-stroke-surface-neutral-weak, #dcdcde);
 				--wcdp-el-surface: var(--wpds-color-background-surface-neutral-strong, #fff);
 				--wcdp-el-muted: var(--wpds-color-foreground-content-neutral-weak, #646970);
-				--wcdp-el-accent: var(--wpds-color-background-surface-brand, #2271b1);
+				/* Interactive tokens, not surface ones: on WP 7.1 the surface-brand
+				   colour is a pale tint (#ecf0fa) a white knob disappears on. */
+				--wcdp-el-accent: var(--wpds-color-background-interactive-brand-strong, #2271b1);
 				--wcdp-el-radius: var(--wpds-border-radius-lg, 6px);
 				max-width: 1120px;
 			}
@@ -1174,7 +1200,7 @@ final class Settings {
 				width: 2.5em;
 				height: 1.35em;
 				border-radius: 999px;
-				background: var(--wpds-color-background-surface-neutral-weak, #c3c4c7);
+				background: var(--wpds-color-stroke-interactive-neutral, #8c8f94);
 				transition: background-color .15s ease;
 			}
 

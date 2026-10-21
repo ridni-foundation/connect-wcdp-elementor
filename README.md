@@ -1,5 +1,7 @@
 # Connect WCDP for Elementor
 
+![Connect WCDP for Elementor](.wordpress-org/banner-1544x500.png)
+
 Donation progress, donor walls and campaign dynamic tags for Donation Platform for WooCommerce — fully styleable inside Elementor.
 
 An add-on for [Donation Platform for WooCommerce](https://wordpress.org/plugins/wc-donation-platform/)
@@ -13,7 +15,7 @@ on its own fundraising pages.
 
 | | |
 |---|---|
-| Version | 3.1.2 |
+| Version | 3.1.5 |
 | Requires | WordPress 6.0+, PHP 7.4+, WooCommerce, Elementor 3.20+, Donation Platform for WooCommerce 1.3.2+ |
 | Tested up to | WordPress 7.1 |
 | License | [GPL-2.0-or-later](LICENSE) |
@@ -76,11 +78,27 @@ Also works with Polylang and WPML (optionally combining donations across
 translations) and with multi-currency switchers: amounts are taken after every
 filter on the site has run, so a converted amount stays converted.
 
+## Screenshots
+
+Donation Progress in the Elementor editor — presets on the left, the live bar on the right:
+
+![Donation Progress in the Elementor editor](.wordpress-org/screenshot-1.png)
+
+A plain Heading showing "Still needed: €2,600" through the Amount Still Needed dynamic tag:
+
+![Dynamic tag in a Heading widget](.wordpress-org/screenshot-4.png)
+
+The finished campaign page as a donor sees it:
+
+![Campaign page as a donor sees it](.wordpress-org/screenshot-6.png)
+
+All seven screenshots are in [`.wordpress-org/`](.wordpress-org/). The demo campaign and donors are made up.
+
 ## Installation
 
 1. Install and activate WooCommerce, Elementor and Donation Platform for
    WooCommerce.
-2. Download `connect-wcdp-elementor-3.1.2.zip` from the
+2. Download `connect-wcdp-elementor-3.1.5.zip` from the
    [latest release](https://github.com/ridni-foundation/connect-wcdp-elementor/releases/latest) and upload it under
    **Plugins → Add New → Upload Plugin**. Use the release asset, not GitHub's
    "Download ZIP" button: the release asset unpacks into the folder WordPress
@@ -96,9 +114,10 @@ A wordpress.org listing is in preparation.
 
 ## Known limitations
 
-- The donation form cannot re-render live in the Elementor editor: the donation
-  platform deliberately returns a placeholder during an editor refresh. Reload
-  the preview to see content changes; style changes apply live.
+- The donation form is not built inside the Elementor editor: the donation
+  platform needs a WooCommerce cart, which the editor usually does not have, so
+  the widget shows a notice there. Open the page or Preview to see the form with
+  the styles set on the widget.
 - One donation form per page, and the classic `[woocommerce_checkout]` is
   required — both are limits of the donation platform.
 - The donor wall and the donation form are not refreshed in the browser; page

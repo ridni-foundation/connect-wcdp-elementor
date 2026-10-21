@@ -1513,10 +1513,15 @@ class Donation_Form extends Widget_Base {
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- First-party WCDP shortcode output.
 		echo '</div>';
 
-		if ( $is_error && $this->is_editor() ) {
+		// WCDP's own messages already name their cause (one form per page,
+		// donations not enabled, product unavailable). The one that needs a
+		// word of explanation is "not available in the current view": WCDP
+		// prints it when WooCommerce has no cart, which is the normal state of
+		// the Elementor editor — not a fault of the page.
+		if ( $is_error && $this->is_editor() && function_exists( 'WC' ) && ! isset( WC()->cart ) ) {
 			printf(
 				'<div class="wcdp-el-placeholder wcdp-el-placeholder--hint"><span class="wcdp-el-placeholder__text">%s</span></div>',
-				esc_html__( 'WCDP returned an error. The usual cause is a second donation form on this page — WCDP permits only one — or donations not being enabled on the selected product.', 'connect-wcdp-elementor' )
+				esc_html__( 'The Elementor editor has no WooCommerce cart, so WCDP cannot build the form here. Open the page or Preview to see it with the styles set in this widget.', 'connect-wcdp-elementor' )
 			);
 		}
 	}

@@ -1,11 +1,11 @@
-=== Connect WCDP for Elementor ===
+=== Connect WCDP for Elementor – Donation Progress, Donor Wall & Fundraising Widgets ===
 Contributors: gufi2019, ridni
 Donate link: https://ridni.org.ua/en/donation/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=connect-wcdp-elementor&utm_content=plugin-donate-link
 Tags: donation, elementor, woocommerce, fundraising, progress bar
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.1.2
+Stable tag: 3.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,11 +99,14 @@ prefer a fixed currency-symbol position instead, there is a control for that.
 Yes. Set the campaign source to "Current post / loop item". If your campaign
 lives in a custom field on a CPT, use "Post meta field" or a dynamic tag.
 
-= Why can't I see the donation form update in the editor? =
+= Why don't I see the donation form in the Elementor editor? =
 
-The donation platform deliberately refuses to build a checkout during an
-Elementor AJAX refresh and returns a placeholder. Reload the preview to see the
-form. Style changes apply live — they are pure CSS and need no re-render.
+The donation platform builds its form on top of a WooCommerce cart, and the
+Elementor editor usually has none, so in the editor the widget shows the
+platform's "not available in the current view" notice with an explanation
+instead of the form. It also refuses to build a checkout while Elementor
+refreshes a single widget. Open the page or Preview to see the form: every style
+you set on the widget applies there.
 
 = Does it slow the site down? =
 
@@ -130,15 +133,29 @@ calling it: no personal data, no writes.
 
 == Screenshots ==
 
-1. Donation progress in the Elementor editor — presets on the left, live result on the right.
-2. The Style tab changes with the elements you enable.
-3. Building a custom progress layout from element toggles.
-4. Dynamic tags: campaign figures in a plain Heading widget.
-5. The donation form's colour palette — twelve variables, per widget.
-6. Donor wall styling, down to each value in a donor line.
-7. Plugin settings: widget manager and diagnostics.
+1. The Donation Progress widget in the Elementor editor, with Composition set to "Use a preset" and preset 2 on the left and the live bar showing €7,400 of €10,000 raised and 3 weeks to go on the right.
+2. On the Style tab of the same preset, only the sections for the elements it shows appear: Progress Bar, Amount, Deadline and Layout.
+3. In "Build it myself" mode, element toggles and text templates such as "Raised {raised}" and "of {goal}" build a custom layout: amounts above the bar, 74% inside it, and the deadline and donation count below.
+4. A plain Heading widget uses the "Amount Still Needed" dynamic tag to show "Still needed: €2,600", with the WCDP Donation tag group open next to the Title field.
+5. The Donor Wall's Donor Line style section, with typography, colour, alignment and margin controls and an Individual Values list for each part of a donor line (amount, first name, last name and more).
+6. The finished campaign page as a donor sees it: progress bar, amount still needed, donation count, recent donors and the donation form.
+7. The settings screen under Elementor → WCDP Integration, with freshness patterns, donation form script protection, the widget manager and a diagnostics panel.
 
 == Changelog ==
+
+= 3.1.5 =
+* New screenshots and descriptions for the plugin page. No code changes.
+
+= 3.1.4 =
+* In the Elementor editor, the donation form widget no longer blames a second form or disabled donations when the donation platform cannot build the form. The editor has no WooCommerce cart, so the widget now says so and points to Preview, where the form shows with your styles.
+* Diagnostics use the correct singular and plural forms ("1 page", "2 pages").
+* The widget switches on the settings screen are clearly visible on WordPress 7.1.
+
+= 3.1.3 =
+* The plugin is now listed as "Connect WCDP for Elementor – Donation Progress, Donor Wall & Fundraising Widgets". The admin screen and notices show the short name, Connect WCDP for Elementor.
+* The campaign picker no longer turns off every query filter to list campaigns in all languages. It asks Polylang and WPML for all languages explicitly, so other plugins that filter queries now apply to it too.
+* Widget wrappers print their HTML attributes through Elementor's own escaping helper.
+* The translation template is complete again.
 
 = 3.1.2 =
 * First public release, on GitHub. The code is the same as in 3.1.1.

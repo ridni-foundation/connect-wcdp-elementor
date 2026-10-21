@@ -187,7 +187,13 @@ final class Requirements {
 		}
 
 		echo '<div class="notice notice-error"><p><strong>';
-		echo esc_html__( 'WCDP Elementor Integration is inactive.', 'connect-wcdp-elementor' );
+		echo esc_html(
+			sprintf(
+				/* translators: %s: plugin name. */
+				__( '%s is inactive.', 'connect-wcdp-elementor' ),
+				WCDP_EL_NAME
+			)
+		);
 		echo '</strong></p><ul style="list-style:disc;margin-left:2em">';
 
 		foreach ( $this->failures as $message ) {

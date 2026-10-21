@@ -3,9 +3,9 @@
 # This file is distributed under the same license as the Connect WCDP for Elementor package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Connect WCDP for Elementor 3.1.2\n"
+"Project-Id-Version: Connect WCDP for Elementor 3.1.5\n"
 "Report-Msgid-Bugs-To: https://github.com/ridni-foundation/connect-wcdp-elementor/issues\n"
-"POT-Creation-Date: 2026-09-14 22:43+0300\n"
+"POT-Creation-Date: 2026-10-21 18:22+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,11 +13,6 @@ msgstr ""
 
 #: includes/admin/class-settings.php:72
 msgid "WCDP Integration"
-msgstr ""
-
-#: includes/admin/class-settings.php:76 includes/admin/class-settings.php:85
-#: includes/admin/class-settings.php:278
-msgid "WCDP Elementor Integration"
 msgstr ""
 
 #: includes/admin/class-settings.php:120
@@ -28,7 +23,7 @@ msgstr ""
 msgid "Settings saved. Elementor's generated CSS was rebuilt."
 msgstr ""
 
-#: includes/admin/class-settings.php:223 includes/admin/class-settings.php:650
+#: includes/admin/class-settings.php:223 includes/admin/class-settings.php:674
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -86,7 +81,7 @@ msgid ""
 "installed. Use it after changing a goal, or when a figure looks stuck."
 msgstr ""
 
-#: includes/admin/class-settings.php:390 includes/admin/class-settings.php:872
+#: includes/admin/class-settings.php:390 includes/admin/class-settings.php:896
 msgid "Detected:"
 msgstr ""
 
@@ -199,7 +194,7 @@ msgstr ""
 msgid "protected on form pages"
 msgstr ""
 
-#: includes/admin/class-settings.php:582 includes/admin/class-settings.php:716
+#: includes/admin/class-settings.php:582 includes/admin/class-settings.php:740
 msgid "Freshness"
 msgstr ""
 
@@ -217,7 +212,7 @@ msgstr ""
 msgid "no refreshing"
 msgstr ""
 
-#: includes/admin/class-settings.php:607 includes/admin/class-settings.php:614
+#: includes/admin/class-settings.php:607 includes/admin/class-settings.php:616
 msgid "Last purge"
 msgstr ""
 
@@ -225,27 +220,43 @@ msgstr ""
 msgid "never"
 msgstr ""
 
-#. translators: 1: human time difference, 2: number of pages.
-#: includes/admin/class-settings.php:617
+#. translators: 1: human time difference, 2: number of pages, e.g. "3 pages".
+#: includes/admin/class-settings.php:620
 #, php-format
-msgid "%1$s ago · %2$d pages"
+msgid "%1$s ago · %2$s"
 msgstr ""
 
-#: includes/admin/class-settings.php:634
+#: includes/admin/class-settings.php:639
 msgid "Known locations"
 msgstr ""
 
-#. translators: 1: number of campaigns, 2: number of pages.
-#: includes/admin/class-settings.php:637
+#. translators: 1: number of campaigns, e.g. "2 campaigns"; 2: number of pages, e.g. "5 pages".
+#: includes/admin/class-settings.php:643
 #, php-format
-msgid "%1$d campaigns on %2$d pages"
+msgid "%1$s on %2$s"
 msgstr ""
 
-#: includes/admin/class-settings.php:697
+#. translators: %d: number of campaigns.
+#: includes/admin/class-settings.php:646
+#, php-format
+msgid "%d campaign"
+msgid_plural "%d campaigns"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of pages.
+#: includes/admin/class-settings.php:664
+#, php-format
+msgid "%d page"
+msgid_plural "%d pages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-settings.php:721
 msgid "no page caching plugin found — only the core purge signal will be sent"
 msgstr ""
 
-#: includes/admin/class-settings.php:718
+#: includes/admin/class-settings.php:742
 msgid ""
 "A page cache serves the totals that were current when it stored the page — "
 "often for hours. These patterns decide how hard the plugin works to correct "
@@ -253,126 +264,126 @@ msgid ""
 "cache to rebuild when a donation lands."
 msgstr ""
 
-#: includes/admin/class-settings.php:739
+#: includes/admin/class-settings.php:763
 msgid "Custom settings"
 msgstr ""
 
-#: includes/admin/class-settings.php:744
+#: includes/admin/class-settings.php:768
 msgid "Refresh figures"
 msgstr ""
 
-#: includes/admin/class-settings.php:749 includes/admin/class-settings.php:788
+#: includes/admin/class-settings.php:773 includes/admin/class-settings.php:812
 msgid "Never"
 msgstr ""
 
-#: includes/admin/class-settings.php:750
+#: includes/admin/class-settings.php:774
 msgid "On page load"
 msgstr ""
 
-#: includes/admin/class-settings.php:751
+#: includes/admin/class-settings.php:775
 msgid "On load and when the tab regains focus"
 msgstr ""
 
-#: includes/admin/class-settings.php:752
+#: includes/admin/class-settings.php:776
 msgid "Continuously, on a timer"
 msgstr ""
 
-#: includes/admin/class-settings.php:766
+#: includes/admin/class-settings.php:790
 msgid ""
 "Fetches current figures over a route no page cache touches, then patches "
 "them into the page. This is what makes cached HTML harmless."
 msgstr ""
 
-#: includes/admin/class-settings.php:771
+#: includes/admin/class-settings.php:795
 msgid "Timer interval"
 msgstr ""
 
-#: includes/admin/class-settings.php:776 includes/admin/class-settings.php:815
+#: includes/admin/class-settings.php:800 includes/admin/class-settings.php:839
 msgid "seconds"
 msgstr ""
 
-#: includes/admin/class-settings.php:778
+#: includes/admin/class-settings.php:802
 msgid ""
 "Only used by the timer mode. Every open tab makes one request per interval, "
 "so short values cost real server time under heavy traffic."
 msgstr ""
 
-#: includes/admin/class-settings.php:783
+#: includes/admin/class-settings.php:807
 msgid "Purge on donation"
 msgstr ""
 
-#: includes/admin/class-settings.php:789
+#: includes/admin/class-settings.php:813
 msgid "Pages that show the campaign"
 msgstr ""
 
-#: includes/admin/class-settings.php:790
+#: includes/admin/class-settings.php:814
 msgid "Only the URLs listed below"
 msgstr ""
 
-#: includes/admin/class-settings.php:791
+#: includes/admin/class-settings.php:815
 msgid "The entire site cache"
 msgstr ""
 
-#: includes/admin/class-settings.php:805
+#: includes/admin/class-settings.php:829
 msgid ""
 "The plugin records which pages display which campaign as they render, so it "
 "can rebuild exactly those and leave the rest of the site cached."
 msgstr ""
 
-#: includes/admin/class-settings.php:810
+#: includes/admin/class-settings.php:834
 msgid "Minimum time between purges"
 msgstr ""
 
-#: includes/admin/class-settings.php:817
+#: includes/admin/class-settings.php:841
 msgid ""
 "Stops a burst of donations from emptying the cache continuously, which would "
 "leave every visitor waiting for a full render."
 msgstr ""
 
-#: includes/admin/class-settings.php:822
+#: includes/admin/class-settings.php:846
 msgid "Always purge these URLs"
 msgstr ""
 
-#: includes/admin/class-settings.php:828
+#: includes/admin/class-settings.php:852
 msgid ""
 "One per line. A path such as /campaign/ is resolved against the site "
 "address, so the list survives a domain change."
 msgstr ""
 
-#: includes/admin/class-settings.php:833
+#: includes/admin/class-settings.php:857
 msgid "WCDP cache lifetime"
 msgstr ""
 
-#: includes/admin/class-settings.php:838
+#: includes/admin/class-settings.php:862
 msgid "seconds (0 keeps WCDP's own six hours)"
 msgstr ""
 
-#: includes/admin/class-settings.php:840
+#: includes/admin/class-settings.php:864
 msgid ""
 "Applies to the donation counter and the leaderboard. The raised total is not "
 "affected: WCDP already drops it within about thirty seconds of a donation, "
 "through WooCommerce Analytics."
 msgstr ""
 
-#: includes/admin/class-settings.php:845
+#: includes/admin/class-settings.php:869
 msgid "Force recalculation"
 msgstr ""
 
-#: includes/admin/class-settings.php:851
+#: includes/admin/class-settings.php:875
 msgid "Drop WCDP's stored total on every donation"
 msgstr ""
 
-#: includes/admin/class-settings.php:854
+#: includes/admin/class-settings.php:878
 msgid ""
 "Only needed where WooCommerce Analytics is disabled or lagging. It costs one "
 "heavy database join on the next uncached render."
 msgstr ""
 
-#: includes/admin/class-settings.php:862
+#: includes/admin/class-settings.php:886
 msgid "Donation form script"
 msgstr ""
 
-#: includes/admin/class-settings.php:865
+#: includes/admin/class-settings.php:889
 msgid ""
 "WCDP renders the form hidden and reveals it with its own script. Every "
 "\"delay JavaScript until interaction\" feature holds that script back, so "
@@ -381,52 +392,52 @@ msgid ""
 msgstr ""
 
 #. translators: %s: optimisation plugin name.
-#: includes/admin/class-settings.php:880
+#: includes/admin/class-settings.php:904
 #, php-format
 msgid "%s (needs \"Also mark the tags\")"
 msgstr ""
 
-#: includes/admin/class-settings.php:891
+#: includes/admin/class-settings.php:915
 msgid "Protection"
 msgstr ""
 
-#: includes/admin/class-settings.php:894
+#: includes/admin/class-settings.php:918
 msgid "Donation form script protection"
 msgstr ""
 
-#: includes/admin/class-settings.php:901
+#: includes/admin/class-settings.php:925
 msgid "Only where the form is (recommended)"
 msgstr ""
 
-#: includes/admin/class-settings.php:902
+#: includes/admin/class-settings.php:926
 msgid ""
 "Tells WP Rocket, LiteSpeed, Perfmatters and Autoptimize to leave the form "
 "script — and jQuery, which it needs — alone, but only on pages that actually "
 "contain a form. The rest of the site keeps every optimisation."
 msgstr ""
 
-#: includes/admin/class-settings.php:905
+#: includes/admin/class-settings.php:929
 msgid "Also mark the tags (widest coverage)"
 msgstr ""
 
-#: includes/admin/class-settings.php:906
+#: includes/admin/class-settings.php:930
 msgid ""
 "Adds opt-out attributes the above plus Cloudflare Rocket Loader, WP Meteor "
 "and NitroPack understand. These cannot be limited to form pages, so jQuery "
 "stops being delayed site-wide. Use it if the form still shows a spinner."
 msgstr ""
 
-#: includes/admin/class-settings.php:909
+#: includes/admin/class-settings.php:933
 msgid "Off"
 msgstr ""
 
-#: includes/admin/class-settings.php:910
+#: includes/admin/class-settings.php:934
 msgid ""
 "Change nothing. Only sensible if you maintain the exclusions by hand in your "
 "caching plugin."
 msgstr ""
 
-#: includes/admin/class-settings.php:932
+#: includes/admin/class-settings.php:956
 msgid ""
 "With this on, remove any manual exclusion you added for the donation form or "
 "jQuery in your caching plugin — a manual jQuery exclusion applies to the "
@@ -482,44 +493,46 @@ msgid "WCDP Donation"
 msgstr ""
 
 #. translators: 1: required PHP version, 2: current PHP version.
-#: includes/class-requirements.php:117
+#: includes/class-requirements.php:120
 #, php-format
 msgid "PHP %1$s or newer is required. This site runs PHP %2$s."
 msgstr ""
 
-#: includes/class-requirements.php:131
+#: includes/class-requirements.php:134
 msgid "WooCommerce must be installed and activated."
 msgstr ""
 
-#: includes/class-requirements.php:139
+#: includes/class-requirements.php:142
 msgid "Elementor must be installed and activated."
 msgstr ""
 
 #. translators: 1: required Elementor version, 2: installed Elementor version.
-#: includes/class-requirements.php:150
+#: includes/class-requirements.php:153
 #, php-format
 msgid "Elementor %1$s or newer is required. Version %2$s is installed."
 msgstr ""
 
-#: includes/class-requirements.php:152 includes/class-requirements.php:174
+#: includes/class-requirements.php:155 includes/class-requirements.php:177
 msgid "unknown"
 msgstr ""
 
-#: includes/class-requirements.php:161
+#: includes/class-requirements.php:164
 msgid ""
 "Donation Platform for WooCommerce (WCDP) must be installed and activated."
 msgstr ""
 
 #. translators: 1: required WCDP version, 2: installed WCDP version.
-#: includes/class-requirements.php:172
+#: includes/class-requirements.php:175
 #, php-format
 msgid ""
 "Donation Platform for WooCommerce %1$s or newer is required. Version %2$s is "
 "installed."
 msgstr ""
 
-#: includes/class-requirements.php:187
-msgid "WCDP Elementor Integration is inactive."
+#. translators: %s: plugin name.
+#: includes/class-requirements.php:193
+#, php-format
+msgid "%s is inactive."
 msgstr ""
 
 #: includes/controls/trait-style-controls.php:115
@@ -664,7 +677,7 @@ msgstr ""
 msgid "— Select a campaign —"
 msgstr ""
 
-#: includes/data/class-product-resolver.php:299
+#: includes/data/class-product-resolver.php:312
 msgid "(no title)"
 msgstr ""
 
@@ -1362,11 +1375,10 @@ msgid ""
 "preview to see the form; Style tab changes apply live and need no reload."
 msgstr ""
 
-#: includes/widgets/class-donation-form.php:1519
+#: includes/widgets/class-donation-form.php:1524
 msgid ""
-"WCDP returned an error. The usual cause is a second donation form on this "
-"page — WCDP permits only one — or donations not being enabled on the "
-"selected product."
+"The Elementor editor has no WooCommerce cart, so WCDP cannot build the form "
+"here. Open the page or Preview to see it with the styles set in this widget."
 msgstr ""
 
 #: includes/widgets/class-leaderboard.php:50
@@ -2105,7 +2117,7 @@ msgstr ""
 msgid "Nothing to show — enable the bar or at least one element."
 msgstr ""
 
-#: includes/widgets/class-progress.php:1351
+#: includes/widgets/class-progress.php:1355
 msgid ""
 "No fundraising goal is set on this product, so the bar, percentage and "
 "remaining amount are hidden. Set a goal in the product's WCDP settings, or "

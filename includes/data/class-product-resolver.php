@@ -252,6 +252,16 @@ final class Product_Resolver {
 		 */
 		$limit = (int) apply_filters( 'wcdp_el_product_picker_limit', 300 );
 
+		// The picker lists campaigns in every language, each labelled with
+		// its own. Polylang reads `'lang' => ''`; WPML has no query argument
+		// for it, so its current language is switched to "all" around the
+		// query and restored right after. Null means WPML is not active.
+		$wpml_language = apply_filters( 'wpml_current_language', null ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
+
+		if ( null !== $wpml_language ) {
+			do_action( 'wpml_switch_language', 'all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
+		}
+
 		$query = new \WP_Query(
 			array(
 				'post_type'              => 'product',
@@ -262,7 +272,6 @@ final class Product_Resolver {
 				'fields'                 => 'ids',
 				'no_found_rows'          => true,
 				'update_post_term_cache' => false,
-				'suppress_filters'       => true,
 				'lang'                   => '',
 				'meta_query'             => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Indexed meta key, editor-only, transient-cached.
 					array(
@@ -272,6 +281,10 @@ final class Product_Resolver {
 				),
 			)
 		);
+
+		if ( null !== $wpml_language ) {
+			do_action( 'wpml_switch_language', $wpml_language ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
+		}
 
 		foreach ( $query->posts as $product_id ) {
 			$product_id = (int) $product_id;
@@ -320,7 +333,7 @@ final class Product_Resolver {
 		}
 
 		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-			$details = apply_filters( 'wpml_post_language_details', null, $post_id );
+			$details = apply_filters( 'wpml_post_language_details', null, $post_id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
 
 			if ( is_array( $details ) && ! empty( $details['language_code'] ) ) {
 				return strtoupper( (string) $details['language_code'] );
@@ -347,10 +360,10 @@ final class Product_Resolver {
 				$ids = array_map( 'absint', array_values( $translations ) );
 			}
 		} elseif ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-			$trid = apply_filters( 'wpml_element_trid', null, $product_id, 'post_product' );
+			$trid = apply_filters( 'wpml_element_trid', null, $product_id, 'post_product' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
 
 			if ( $trid ) {
-				$translations = apply_filters( 'wpml_get_element_translations', null, $trid, 'post_product' );
+				$translations = apply_filters( 'wpml_get_element_translations', null, $trid, 'post_product' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Third-party hook: WPML API.
 
 				if ( is_array( $translations ) ) {
 					foreach ( $translations as $translation ) {

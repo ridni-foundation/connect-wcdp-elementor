@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Connect WCDP for Elementor
+ * Plugin Name: Connect WCDP for Elementor – Donation Progress, Donor Wall & Fundraising Widgets
  * Plugin URI: https://github.com/ridni-foundation/connect-wcdp-elementor
  * Description: Donation progress, donor walls and campaign dynamic tags for Donation Platform for WooCommerce — fully styleable inside Elementor.
- * Version: 3.1.2
+ * Version: 3.1.5
  * Author: Ridni Foundation
  * Author URI: https://ridni.org.ua/en/
  * Requires at least: 6.0
@@ -25,7 +25,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WCDP_EL_VERSION', '3.1.2' );
+define( 'WCDP_EL_VERSION', '3.1.5' );
+
+/**
+ * Product name shown in the admin screen, notices and cache-purge logs.
+ *
+ * A product name, not a phrase, so it is not translated. The public build
+ * rewrites it from `.wporg/wporg.json` (`short_name`), which is why every
+ * visible occurrence goes through this constant.
+ */
+define( 'WCDP_EL_NAME', 'Connect WCDP for Elementor' );
 define( 'WCDP_EL_FILE', __FILE__ );
 define( 'WCDP_EL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCDP_EL_URL', plugin_dir_url( __FILE__ ) );

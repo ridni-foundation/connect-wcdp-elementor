@@ -736,7 +736,9 @@ class Leaderboard extends Widget_Base {
 			)
 		);
 
-		echo '<div ' . $this->get_render_attribute_string( 'wrapper' ) . '>';
+		echo '<div ';
+		$this->print_render_attribute_string( 'wrapper' );
+		echo '>';
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- First-party WCDP shortcode output.
 		echo '</div>';
 	}

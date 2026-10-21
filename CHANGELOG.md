@@ -8,6 +8,32 @@ Versions before 3.1.2 were used privately by the Ridni Foundation under the
 name "WCDP Elementor Integration" and were never published; they are listed so
 the history of the code is complete.
 
+## [3.1.5] — 2026-10-21
+
+### Changed
+
+- New screenshots and descriptions for the plugin page. No code changes.
+
+## [3.1.4] — 2026-10-21
+
+### Fixed
+
+- In the Elementor editor, the donation form widget no longer blames a second form or disabled donations when the donation platform cannot build the form. The editor has no WooCommerce cart, so the widget now says so and points to Preview, where the form shows with your styles.
+- Diagnostics use the correct singular and plural forms ("1 page", "2 pages").
+- The widget switches on the settings screen are clearly visible on WordPress 7.1.
+
+## [3.1.3] — 2026-10-21
+
+### Changed
+
+- The plugin is now listed as "Connect WCDP for Elementor – Donation Progress, Donor Wall & Fundraising Widgets". The admin screen and notices show the short name, Connect WCDP for Elementor.
+- The campaign picker no longer turns off every query filter to list campaigns in all languages. It asks Polylang and WPML for all languages explicitly, so other plugins that filter queries now apply to it too.
+
+### Fixed
+
+- Widget wrappers print their HTML attributes through Elementor's own escaping helper.
+- The translation template is complete again.
+
 ## [3.1.2] — 2026-10-21
 
 ### Changed
