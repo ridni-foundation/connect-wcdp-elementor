@@ -8,6 +8,13 @@ Versions before 3.1.2 were used privately by the Ridni Foundation under the
 name "WCDP Elementor Integration" and were never published; they are listed so
 the history of the code is complete.
 
+## [3.1.6] — 2026-10-23
+
+### Changed
+
+- Requires WordPress 7.1 or newer, the oldest version it is tested on. No code changes.
+- Declared as tested with Elementor 4.3 and WooCommerce 11.2.
+
 ## [3.1.5] — 2026-10-21
 
 ### Changed

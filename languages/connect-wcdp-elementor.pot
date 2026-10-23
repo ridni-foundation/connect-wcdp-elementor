@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Connect WCDP for Elementor package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Connect WCDP for Elementor 3.1.5\n"
+"Project-Id-Version: Connect WCDP for Elementor 3.1.6\n"
 "Report-Msgid-Bugs-To: https://github.com/ridni-foundation/connect-wcdp-elementor/issues\n"
 "POT-Creation-Date: 2026-10-21 18:22+0300\n"
 "MIME-Version: 1.0\n"

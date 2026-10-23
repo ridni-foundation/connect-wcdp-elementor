@@ -15,8 +15,8 @@ on its own fundraising pages.
 
 | | |
 |---|---|
-| Version | 3.1.5 |
-| Requires | WordPress 6.0+, PHP 7.4+, WooCommerce, Elementor 3.20+, Donation Platform for WooCommerce 1.3.2+ |
+| Version | 3.1.6 |
+| Requires | WordPress 7.1+, PHP 7.4+, WooCommerce, Elementor 3.20+, Donation Platform for WooCommerce 1.3.2+ |
 | Tested up to | WordPress 7.1 |
 | License | [GPL-2.0-or-later](LICENSE) |
 
@@ -80,25 +80,29 @@ filter on the site has run, so a converted amount stays converted.
 
 ## Screenshots
 
-Donation Progress in the Elementor editor — presets on the left, the live bar on the right:
+On the Style tab of the same preset, only the sections for the elements it shows appear: Progress Bar, Amount, Deadline and Layout.
 
-![Donation Progress in the Elementor editor](.wordpress-org/screenshot-1.png)
+![Screenshot 2](.wordpress-org/screenshot-2.png)
 
-A plain Heading showing "Still needed: €2,600" through the Amount Still Needed dynamic tag:
+In "Build it myself" mode, element toggles and text templates such as "Raised {raised}" and "of {goal}" build a custom layout: amounts above the bar, 74% inside it, and the deadline and donation count below.
 
-![Dynamic tag in a Heading widget](.wordpress-org/screenshot-4.png)
+![Screenshot 3](.wordpress-org/screenshot-3.png)
 
-The finished campaign page as a donor sees it:
+The Donor Wall's Donor Line style section, with typography, colour, alignment and margin controls and an Individual Values list for each part of a donor line (amount, first name, last name and more).
 
-![Campaign page as a donor sees it](.wordpress-org/screenshot-6.png)
+![Screenshot 5](.wordpress-org/screenshot-5.png)
 
-All seven screenshots are in [`.wordpress-org/`](.wordpress-org/). The demo campaign and donors are made up.
+The finished campaign page as a donor sees it: progress bar, amount still needed, donation count, recent donors and the donation form.
+
+![Screenshot 6](.wordpress-org/screenshot-6.png)
+
+All screenshots are in [`.wordpress-org/`](.wordpress-org/). The demo campaign and donors are made up.
 
 ## Installation
 
 1. Install and activate WooCommerce, Elementor and Donation Platform for
    WooCommerce.
-2. Download `connect-wcdp-elementor-3.1.5.zip` from the
+2. Download `connect-wcdp-elementor-3.1.6.zip` from the
    [latest release](https://github.com/ridni-foundation/connect-wcdp-elementor/releases/latest) and upload it under
    **Plugins → Add New → Upload Plugin**. Use the release asset, not GitHub's
    "Download ZIP" button: the release asset unpacks into the folder WordPress

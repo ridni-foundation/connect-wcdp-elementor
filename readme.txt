@@ -2,10 +2,10 @@
 Contributors: gufi2019, ridni
 Donate link: https://ridni.org.ua/en/donation/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=connect-wcdp-elementor&utm_content=plugin-donate-link
 Tags: donation, elementor, woocommerce, fundraising, progress bar
-Requires at least: 6.0
+Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -142,6 +142,10 @@ calling it: no personal data, no writes.
 7. The settings screen under Elementor → WCDP Integration, with freshness patterns, donation form script protection, the widget manager and a diagnostics panel.
 
 == Changelog ==
+
+= 3.1.6 =
+* Requires WordPress 7.1 or newer, the oldest version it is tested on. No code changes.
+* Declared as tested with Elementor 4.3 and WooCommerce 11.2.
 
 = 3.1.5 =
 * New screenshots and descriptions for the plugin page. No code changes.
