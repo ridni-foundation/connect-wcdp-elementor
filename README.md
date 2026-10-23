@@ -98,6 +98,14 @@ The finished campaign page as a donor sees it: progress bar, amount still needed
 
 All screenshots are in [`.wordpress-org/`](.wordpress-org/). The demo campaign and donors are made up.
 
+## Coming in 3.2
+
+- **Live donation form in the Elementor editor.** Today the editor has no WooCommerce
+  cart, so the donation form widget shows a notice there and the form appears only on the
+  page or in Preview. Version 3.2 builds the form right in the editor canvas, so you see
+  every style change live. It will be on by default, with a switch in
+  Elementor → WCDP Integration to turn it off.
+
 ## Installation
 
 1. Install and activate WooCommerce, Elementor and Donation Platform for
